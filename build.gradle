@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'jacoco'
     id 'application'
+    id 'org.sonarqube' version '3.3'
 }
 
 group = 'itau.iti'
@@ -34,5 +35,11 @@ jacocoTestReport {
     dependsOn test
     reports {
         xml.required = true
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "gustavo-veiga_iti-backend-challenge"
     }
 }
