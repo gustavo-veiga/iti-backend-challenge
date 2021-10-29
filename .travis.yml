@@ -1,5 +1,6 @@
 env:
   global:
+    - JACOCO_SOURCE_PATH=src/main/java
     - CC_TEST_REPORTER_ID=2b849c0fe243827ab0460edd83bb1ee75c2c518c453e59b8f8b54686372ea215
 language: java
 jdk:
@@ -9,4 +10,5 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - ./cc-test-reporter format-coverage build/reports/jacoco/test/jacocoTestReport.xml --input-type jacoco
+  - ./cc-test-reporter upload-coverage
