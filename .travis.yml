@@ -1,18 +1,22 @@
-env:
-  global:
-    - JACOCO_SOURCE_PATH=src/main/java
+language: java
+
+services:
+  - docker
+
 addons:
   sonarcloud:
-    organization: "gustavo-veiga"
+    organization: $SONARCLOUD_ORGANIZATION
     token:
-      secure: "adPZzgbtWuRarurYBzjvx0mESgWE3zjBAJBU8r0cOu+Vj3uYIUgz8dQNSXnx3zAwEhtZ1o6tn+hPYiq1r+1HXdmvposNVUWYP+2e4rplyofILbDflsfMR8ceoBTr53qoLt/UBomzQoN67CsebcBIfT3WWZ0brTL8O+d3TEJS2Xoj5KpkbckPzGMwZgk6+o5faCigPmlOWnvFGXRJn8T+xc7ggrxMvUpj9mE74fCvU3L0aq7cE0Rv8hrvAyAgU/OsZPAA36CrCriPrrlCH8YiROt7D73WsU2wwSripwVwMSQE0KiB8yu5iCYuz/fY4IvGC5H//iai1tXgzNVoRsY2cUFj3XVTvbNG6ubRVxtQRxZa79hBEy+3KxnRlzQEm5HPDaAKWVXxFlhd7ViskjvMGdeyqPXdwUq4pMEK9OaX0s8tS0MWJjbSH7rfqX+fL9ukflNDvl04+lY/xZ1WeVA8mSuthdUajBoT4ZL+1DAc9+F5nw6dohx67IsQ4wyKg+g59O2/bb1OFyxhkPruEH5Fo+7XN5e+6bC83RvzEDZCmS1wgZ5U/6a0qlIPWZomGc5IEQmlhUcWmtYMkiEpMLax8d/ArOnr/Sd6Vg/cQtW9Dt/yzCsp2+QT+Kz420RiPgH2OSYkOnHq+lFoQwndzWCzoZh9H84D4Hhz7JgiVLVT9wc="
-language: java
+      secure: $SONARCLOUD_TOKEN
+
 jdk:
   - oraclejdk11
+
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
+
 after_script:
   - ./cc-test-reporter format-coverage build/reports/jacoco/test/jacocoTestReport.xml --input-type jacoco
   - ./cc-test-reporter upload-coverage
