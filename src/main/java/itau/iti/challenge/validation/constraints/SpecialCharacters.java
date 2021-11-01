@@ -12,14 +12,16 @@ import itau.iti.challenge.validation.SpecialCharactersValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
+import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
+@Documented
 @Constraint(validatedBy = SpecialCharactersValidator.class)
 public @interface SpecialCharacters {
-    String message() default "There are no special characters";
+    String message() default "must contain a special characters";
 
     Class<?>[] groups() default {};
 

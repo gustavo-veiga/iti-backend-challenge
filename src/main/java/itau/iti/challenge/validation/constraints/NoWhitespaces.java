@@ -12,14 +12,16 @@ import itau.iti.challenge.validation.NoWhitespacesValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
+import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
+@Documented
 @Constraint(validatedBy = NoWhitespacesValidator.class)
 public @interface NoWhitespaces {
-    String message() default "There are whitespaces characters";
+    String message() default "must not contains whitespaces";
 
     Class<?>[] groups() default {};
 

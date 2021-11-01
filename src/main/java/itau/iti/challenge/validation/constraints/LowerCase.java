@@ -12,14 +12,16 @@ import itau.iti.challenge.validation.LowerCaseValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
+import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
+@Documented
 @Constraint(validatedBy = LowerCaseValidator.class)
 public @interface LowerCase {
-    String message() default "There are no lower case characters";
+    String message() default "must contain an lowercase character";
 
     Class<?>[] groups() default {};
 

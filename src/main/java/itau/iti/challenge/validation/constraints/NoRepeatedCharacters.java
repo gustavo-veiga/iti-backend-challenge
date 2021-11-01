@@ -12,14 +12,16 @@ import itau.iti.challenge.validation.NoRepeatedCharactersValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
+import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
+@Documented
 @Constraint(validatedBy = NoRepeatedCharactersValidator.class)
 public @interface NoRepeatedCharacters {
-    String message() default "There are repeated characters";
+    String message() default "must not contain a repeated characters";
 
     Class<?>[] groups() default {};
 
