@@ -1,3 +1,7 @@
+![Travis (.com)](https://app.travis-ci.com/gustavo-veiga/iti-backend-challenge.svg?branch=master)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=gustavo-veiga_iti-backend-challenge&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=gustavo-veiga_iti-backend-challenge)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=gustavo-veiga_iti-backend-challenge&metric=coverage)](https://sonarcloud.io/summary/new_code?id=gustavo-veiga_iti-backend-challenge)
+
 # Descrição
 
 Considere uma senha sendo válida quando a mesma possuir as seguintes definições:
@@ -32,37 +36,24 @@ Construa uma aplicação que exponha uma api web que valide se uma senha é vál
 Input: Uma senha (string).  
 Output: Um boolean indicando se a senha é válida.
 
-Embora nossas aplicações sejam escritas em Kotlin e C# (.net core), você não precisa escrever sua solução usando elas. Use a linguagem de programação que considera ter mais conhecimento.
+## Como executar
 
-## Pontos que daremos maior atenção
+Com Gradle:
+```bash
+./gradlew run
+```
 
-- Testes de unidade / integração
-- Abstração, acoplamento, extensibilidade e coesão
-- Design de API
-- Clean Code
-- SOLID
-- Documentação da solução no *README* 
+Com Docker:
+```bash
+docker run -d -it --name iti -p 8080:8080 gustaveiga/iti-challenge:0.0.1
+```
 
-## Pontos que não iremos avaliar
-
-- docker file
-- scripts ci/cd
-- coleções do postman ou ferramentas para execução
-
-### Sobre a documentação
-
-Nesta etapa do processo seletivo queremos entender as decisões por trás do código, portanto é fundamental que o *README* tenha algumas informações referentes a sua solução.
-
-Algumas dicas do que esperamos ver são:
-
-- Instruções básicas de como executar o projeto;
-- Detalhes sobre a sua solução, gostariamos de saber qual foi seu racional nas decisões;
-- Caso algo não esteja claro e você precisou assumir alguma premissa, quais foram e o que te motivou a tomar essas decisões.
-
-## Como esperamos receber sua solução
-
-Esta etapa é eliminatória, e por isso esperamos que o código reflita essa importância.
-
-Se tiver algum imprevisto, dúvida ou problema, por favor entre em contato com a gente, estamos aqui para ajudar.
-
-Nos envie o link de um repo público com a sua solução.
+## Solução
+O Uso de beans validation para validação dos dados,  possibilitando a consistência das informações em diferentes camadas.
+Foram criadas validações customizadas para cada cenário de validação:
+- **@LowerCase**, valida se uma string contém ao menos, um caractere minusculo.
+- **@UpperCase**, valida se uma string contém ao menos, um caractere maiúsculo.
+- **@NoWhitespaces**, valida se uma string contém um ou mais caractere em branco ou similar (como tabulação, retorno de carro, quebra de linha, outros espaçamentos unicode, etc)
+- **@SpecialCharacters**, valida se uma string contém um ou mais caractere espacial dos previamente definidos ou passado na anotação.
+- **@NoRepeatedCharacters**, valida se uma string contém caracteres repetidos.
+- **@Password**, composição do tipo "AND" de todas as anteriores, mais a validação de no mínimo 9 caracteres.
