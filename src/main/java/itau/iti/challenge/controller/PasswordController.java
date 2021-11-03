@@ -3,7 +3,6 @@ package itau.iti.challenge.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import itau.iti.challenge.dto.DPasswordValidateRequest;
 import itau.iti.challenge.dto.DPasswordValidateResponse;
-import itau.iti.challenge.mapper.PasswordMapper;
 import itau.iti.challenge.service.PasswordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
