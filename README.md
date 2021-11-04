@@ -54,6 +54,6 @@ Foram criadas validações customizadas para cada cenário de validação:
 - **@LowerCase**, valida se uma string contém ao menos, um caractere minusculo.
 - **@UpperCase**, valida se uma string contém ao menos, um caractere maiúsculo.
 - **@NoWhitespaces**, valida se uma string contém um ou mais caractere em branco ou similar (como tabulação, retorno de carro, quebra de linha, outros espaçamentos unicode, etc)
-- **@SpecialCharacters**, valida se uma string contém um ou mais caractere espacial dos previamente definidos ou passado na anotação.
+- **@SpecialCharacters**, valida se uma string contém pelo menos um caractere especial dos previamente definidos ou customizado.
 - **@NoRepeatedCharacters**, valida se uma string contém caracteres repetidos.
 - **@Password**, composição do tipo "AND" de todas as anteriores, mais a validação de no mínimo 9 caracteres.
